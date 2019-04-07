@@ -1,0 +1,16 @@
+# ignore terraform
+**/.terraform
+.terraform/
+
+# ignore all logs
+**.log
+
+# ignore all lock files
+.lock
+
+# ignore all tmp files
+.tmp
+
+# ignore all hidden system files
+.DS_Store
+Thumbs.db
