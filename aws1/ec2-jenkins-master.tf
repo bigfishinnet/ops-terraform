@@ -22,7 +22,7 @@ resource "aws_key_pair" "my-master-key" {
 }
 
 resource "aws_instance" "jenkins-master" {
- 
+
   key_name = "${aws_key_pair.my-master-key.key_name}"
   ami = "${data.aws_ami.amz-jenkins-master.id}"
   subnet_id = "${aws_subnet.stephen-subnetpublic.id}"
@@ -32,14 +32,14 @@ resource "aws_instance" "jenkins-master" {
 
   user_data = <<-EOF
               #!/bin/bash
-              yum remove java* -y 
-              yum install yum install java-1.8.0-openjdk -y 
+              yum remove java* -y
+              yum install java-1.8.0-openjdk -y
               #wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
               #rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
               #yum install jenkins -y
               #/etc/init.d/jenkins start
               EOF
    tags {
-     Name = "${var.nameTAGS}"
+     Name = "${var.namemasterTAGS}"
      }
 }

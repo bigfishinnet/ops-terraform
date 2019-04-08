@@ -2,7 +2,7 @@
 resource "aws_security_group" "stephen" {
  name = "stephen"
  vpc_id = "${aws_vpc.main.id}"
- 
+
  # SSH access
  ingress {
    from_port   = 22
@@ -16,11 +16,18 @@ resource "aws_security_group" "stephen" {
    protocol        = "-1"
    cidr_blocks     = ["${var.allinternetCIDRblock}"]
    }
-   # HTTP access
+   # Jenkins access
  ingress {
    from_port   = 8080
    to_port     = 8080
    protocol    = "tcp"
    cidr_blocks = ["${var.allinternetCIDRblock}"]
    }
+    # HTTPD access
+    ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["${var.allinternetCIDRblock}"]
+    }
 }
